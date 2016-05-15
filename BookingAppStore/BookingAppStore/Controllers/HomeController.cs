@@ -19,9 +19,9 @@ namespace BookingAppStore.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Buy(int id)
+        public ActionResult Buy(int bookId)
         {
-            ViewBag.BookId = id;
+            ViewBag.BookId = bookId;
             return View();
         }
         [HttpPost]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControllersBasic.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -42,11 +43,11 @@ namespace ControllersBasic.Controllers
             return String.Format("<h2>{0} {1}</h2>", title, author);
         }
 
-        public string SquareNo()
+        public ContentResult SquareNo()
         {
             int a = int.Parse(Request.Params["a"]);
             int b = int.Parse(Request.Params["b"]);
-            return (a + b).ToString();
+            return Content((a + b).ToString());
         }
 
 
@@ -56,5 +57,25 @@ namespace ControllersBasic.Controllers
 
             return View();
         }
+
+
+        public ActionResult GetHtml()
+        {
+            HtmlResult hr = new HtmlResult("<h2>Привет мир!</h2>");
+            hr.ExecuteResult(this.ControllerContext);
+            return hr;
+        }
+
+        public ActionResult GetImage(string path)
+        {
+            //string path = "../Content/Images/son.jpg";
+            return new ImageResult(path);
+        }
+
+        public ActionResult Get404()
+        {
+            return new HttpStatusCodeResult(404);
+        }
+
     }
 }

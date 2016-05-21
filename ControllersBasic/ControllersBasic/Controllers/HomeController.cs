@@ -11,6 +11,10 @@ namespace ControllersBasic.Controllers
     {
         public ActionResult Index()
         {
+            //return View("~/Views/Some/Index.cshtml");
+            ViewData["Head"] = "привет";
+            List<string> fruits = new List<string>() { "яблоко", "груша", "банан" };
+            ViewBag.Fruits = fruits;
             return View();
         }
 
@@ -66,9 +70,11 @@ namespace ControllersBasic.Controllers
             return hr;
         }
 
-        public ActionResult GetImage(string path)
+        //public ActionResult GetImage(string path)
+        public ActionResult GetImage()
         {
-            //string path = "../Content/Images/son.jpg";
+            string path = "../Content/Images/son.jpg";
+            //string path = "~/Content/Images/son.jpg";
             return new ImageResult(path);
         }
 

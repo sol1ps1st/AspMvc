@@ -1,6 +1,7 @@
 ﻿using ControllersBasic.Util;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -83,5 +84,17 @@ namespace ControllersBasic.Controllers
             return new HttpStatusCodeResult(404);
         }
 
+
+        public FileResult GetFile()
+        {
+            string path = Server.MapPath("~/Content/Images/son.jpg");
+            //return File(path, "pdf");
+            //string path = Server.MapPath("~/Files/PDFIcon.pdf");
+            // Объект Stream
+            FileStream fs = new FileStream(path, FileMode.Open);
+            string file_type = "application/pdf";
+            string file_name = "PDFIcon.pdf";
+            return File(fs, file_type, file_name);
+        }
     }
 }
